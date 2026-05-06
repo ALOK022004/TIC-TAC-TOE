@@ -1,0 +1,38 @@
+import java.util.Scanner;
+
+public class TicTacToeGame {
+
+    // Method to handle User Input (Key Concept: Method Creation)
+    public int getPlayerInput() {
+        Scanner scanner = new Scanner(System.in);
+        int slot;
+
+        while (true) {
+            System.out.print("Enter a slot number (1-9): ");
+
+            // Check if the input is an integer (Key Requirement: Read integer input)
+            if (scanner.hasNextInt()) {
+                slot = scanner.nextInt();
+
+                // Validate the range (Key Requirement: Between 1 and 9)
+                if (slot >= 1 && slot <= 9) {
+                    return slot; // Return the slot value
+                } else {
+                    System.out.println("Invalid input. Please enter a number between 1 and 9.");
+                }
+            } else {
+                System.out.println("That's not a number! Please enter an integer.");
+                scanner.next(); // Clear the invalid input
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        TicTacToeGame game = new TicTacToeGame();
+
+        // Flow: User enters slot -> program reads input -> control returns
+        int selectedSlot = game.getPlayerInput();
+
+        System.out.println("You selected slot: " + selectedSlot);
+    }
+}
